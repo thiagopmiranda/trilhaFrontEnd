@@ -1,10 +1,10 @@
-# 💻Sistema de controle de versões (VCS)
+## 💻Sistema de controle de versões (VCS)
 
 Sistema de versionamento de arquivos são ferramentas que nos dão o controle de tudo aquilo que já foi feito, que já foi escrito, apagado e todas as alterações já realizadas no desenvolvimento de um software. Ele permite o trabalho em grupo de maneira que diferentes pessoas possam trabalhar ao mesmo tempo, num mesmo arquivo.
 
 ---
 
-# 📃5 vantagens em utilizar um VCS:
+## 📃5 vantagens em utilizar um VCS:
 
 <ol> 
   <li>⛓️ Permite o trabalho em equipe. </li>
@@ -16,7 +16,7 @@ Sistema de versionamento de arquivos são ferramentas que nos dão o controle de
 
 ---
 
-# 🛠️ 3 exemplos de VCS:
+## 🛠️ 3 exemplos de VCS:
 
 - [GitHub](https://github.com/)
 - [Subversion](https://subversion.apache.org/)

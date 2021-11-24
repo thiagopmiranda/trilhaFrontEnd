@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tabelas</title>
+    <style>
+      .table {
+        display: block;
+      }
+      .row {
+        display: block;
+      }
+      .black-cell {
+        display: inline-block;
+        background: black;
+        width: 50px;
+        height: 50px;
+      }
+      .gray-cell {
+        display: inline-block;
+        background: gray;
+        width: 50px;
+        height: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <section>
+      <h1>DIV</h1>
+      <div class="table">
+        <div class="row">
+          <div class="black-cell"></div>
+          <div class="gray-cell"></div>
+          <div class="black-cell"></div>
+          <div class="gray-cell"></div>
+        </div>
+        <div class="row">
+          <div class="gray-cell"></div>
+          <div class="black-cell"></div>
+          <div class="gray-cell"></div>
+          <div class="black-cell"></div>
+        </div>
+        <div class="row">
+          <div class="black-cell"></div>
+          <div class="gray-cell"></div>
+          <div class="black-cell"></div>
+          <div class="gray-cell"></div>
+        </div>
+        <div class="row">
+          <div class="gray-cell"></div>
+          <div class="black-cell"></div>
+          <div class="gray-cell"></div>
+          <div class="black-cell"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h1>TABLE</h1>
+      <table>
+        <thead>
+          <tr>
+            <th width="50" height="50" bgcolor="black"></th>
+            <th width="50" height="50" bgcolor="gray"></th>
+            <th width="50" height="50" bgcolor="black"></th>
+            <th width="50" height="50" bgcolor="gray"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td width="50" height="50" bgcolor="gray"></td>
+            <td width="50" height="50" bgcolor="black"></td>
+            <td width="50" height="50" bgcolor="gray"></td>
+            <td width="50" height="50" bgcolor="black"></td>
+          </tr>
+          <tr>
+            <td width="50" height="50" bgcolor="black"></td>
+            <td width="50" height="50" bgcolor="gray"></td>
+            <td width="50" height="50" bgcolor="black"></td>
+            <td width="50" height="50" bgcolor="gray"></td>
+          </tr>
+          <tr>
+            <td width="50" height="50" bgcolor="gray"></td>
+            <td width="50" height="50" bgcolor="black"></td>
+            <td width="50" height="50" bgcolor="gray"></td>
+            <td width="50" height="50" bgcolor="black"></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </body>
+</html>
