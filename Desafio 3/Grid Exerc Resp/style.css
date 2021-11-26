@@ -1,0 +1,143 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+p {
+  margin-top: 1rem;
+}
+
+ul {
+  list-style: none;
+}
+
+.container {
+  height: 100vh;
+  width: 100%;
+  max-width: 1120px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 15% 15% 50% 10% 10%;
+  grid-template-areas:
+    'head head'
+    'nav nav'
+    'section section'
+    'aside aside'
+    'footer footer';
+  gap: 5px;
+}
+
+header {
+  background: lightgrey;
+  grid-area: head;
+  display: grid;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+nav {
+  background: lightblue;
+  grid-area: nav;
+  display: grid;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+nav ul li {
+  margin-bottom: 0.5rem;
+}
+
+section {
+  background: lightgrey;
+  grid-area: section;
+  padding-left: 1rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+article {
+  max-height: 90%;
+  height: 100%;
+  margin-top: 1rem;
+  margin-left: 1rem;
+  margin-right: 2rem;
+  padding: 2rem 2rem;
+}
+
+aside {
+  background: lightgrey;
+  grid-area: aside;
+  display: grid;
+  padding-left: 1rem;
+  padding-top: 2rem;
+}
+
+footer {
+  background: lightgrey;
+  grid-area: footer;
+  display: grid;
+  align-items: center;
+  padding-left: 1rem;
+}
+
+#title {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
+}
+
+/* Responsividade */
+/* medium large devices: 920 > */
+@media (min-width: 920px) {
+  /* navigation */
+  .container {
+    height: 100vh;
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 70% 30%;
+    grid-template-rows: 10% 10% 70% 10%;
+    grid-template-areas:
+      'head head'
+      'nav nav'
+      'section aside'
+      'footer footer';
+    gap: 5px;
+  }
+
+  section {
+    background: lightgrey;
+    grid-area: section;
+    padding-left: 1rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  #title {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  nav ul {
+    background: lightblue;
+    display: grid;
+    grid-template-columns: 20% 20% 20%;
+    grid-template-rows: 100%;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  article {
+    max-height: 90%;
+    height: 100%;
+    background: grey;
+    margin-top: 1rem;
+    margin-left: 1rem;
+    margin-right: 2rem;
+    padding: 2rem 2rem;
+  }
+}

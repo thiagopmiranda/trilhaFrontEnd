@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grid Layout</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Grid Layout</h1>
+    </header>
+    <main>
+      <div>
+        <h2>O que é Grid Layout?</h2>
+        <p>
+          É uma especificação projetada criação de layout através de método
+          bi-dimensional, possibilitando organizar os itens da página co o uso
+          de linhas e colunas. O diferencial desse método é que ele possibilita
+          dividir uma página em grandes regiões e definir o relacionamento em
+          termos de medidas, posicionamento e camadas entre os diferentes
+          componentes de marcação HTML.
+        </p>
+        <div class="wrapper">
+          <div class="box a">a</div>
+          <div class="box b">b</div>
+          <div class="box c">c</div>
+          <div class="box d">d</div>
+          <div class="box e">e</div>
+          <div class="box f">f</div>
+        </div>
+      </div>
+      <div>
+        <h2>Grid Container</h2>
+        <p>
+          É a tag que envolve os itens do grid, ao indicar
+          <code>display:grid</code>, essa tag passa a ser um Grid Container.
+        </p>
+        <p><code>.container {display:grid}</code></p>
+        <section>
+          <h3>grid-template-colums e grid-template-rows</h3>
+          <p>
+            Como estamos trabalhando com grade, é necessário indicar quantas
+            linhas e quantas colunas ela irá ter. Para colunas usamos o
+            <code>grid-template-colums</code> e para linhas usamos o
+            <code>grid-template-rows</code>
+          </p>
+          <p>
+            O valor dado ao número de colunas ou linhas que queremos é indicado
+            para cada uma. Por exemplo, se queremos 4 colunas, não colacaríamos
+            o número quatro, mas sim a medida de cada, em qualquer unidade (px,
+            em, %, cm etc), separada por um espaço.
+          </p>
+          <p>
+            <code
+              >grid-template-columns: 20% 5rem 40%; grid-template-rows: 40%
+              60%;</code
+            >
+          </p>
+          <div class="grid-container">
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+            <div class="item"></div>
+          </div>
+        </section>
+        <section>
+          <h3>grid-template-areas</h3>
+          <p>
+            O CSS Grid permite ir além de apenas organizar a grid de acordo com
+            a ordem em que estão no HTML. Podemos dar nomes para cada área da
+            grade e depois indicar onde cada elemento deve ir. Esse modo deixa
+            bem simple de entender a estrutura do grid e é feito através da
+            propriedade <code>grid-template-areas</code>
+          </p>
+          <p>
+            <code
+              >.area-container { display: grid; grid-template-columns: 40% 60%;
+              grid-template-rows: 30% 50% 20%; grid-template-areas: 'header
+              header' 'sidenav content' 'footer footer';}</code
+            >
+          </p>
+          <p>
+            <code
+              >.header { grid-area: header; } .sidenav { grid-area: sidenav; }
+              .content { grid-area: content; } .footer { grid-area: footer;
+              }</code
+            >
+          </p>
+          <div class="area-container">
+            <div class="item header">Header</div>
+            <div class="item sidenav">Sidenav</div>
+            <div class="item content">Content</div>
+            <div class="item footer">Footer</div>
+          </div>
+        </section>
+        <section>
+          <h3>gap</h3>
+          <p>
+            É propriedade que define as lacunas entre as linhas e colunas. É uma
+            abreviatura mais recente para usar no lugar de
+            <code>grid-column-gap</code>, <code>grid-row-gap</code> e
+            <code>grid-gap</code>
+          </p>
+          <p>
+            <code
+              >#gap-grid { display: grid; grid-template: repeat(3, 1fr) /
+              repeat(3, 1fr); gap: 1rem 0.5rem;}</code
+            >
+          </p>
+          <div id="gap-grid">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+          </div>
+        </section>
+        <section>
+          <h3>justify-items</h3>
+          <p>
+            Alinha todos os itens da grid horizontalmente dentro de sua própria
+            célula(área)
+          </p>
+          <ul>
+            <li>
+              <b>stretch (padrão)</b>: estica os itens horizontalmente para eles
+              preencherem sua célula
+            </li>
+            <li><b>start</b>: alinha os itens no início de suas células</li>
+            <li><b>end</b>: alinha os itens no final de suas células</li>
+            <li><b>center</b>: alinha os itens no centro de suas células</li>
+          </ul>
+          <div>
+            <h4>justify-items: start;</h4>
+            <section class="grid1 start1">
+              <div class="item">AB 1</div>
+              <div class="item item-2">AB 2</div>
+              <div class="item item-3">Item 3</div>
+              <div class="item">AB 4</div>
+              <div class="item item-5">Item 5</div>
+              <div class="item">ABCD 6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>justify-items: end;</h4>
+            <section class="grid1 end1">
+              <div class="item">Item 1</div>
+              <div class="item item-2">AB 2</div>
+              <div class="item item-3">ABCD 3</div>
+              <div class="item">Item 4</div>
+              <div class="item item-5">Item 5</div>
+              <div class="item">AB 6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>justify-items: center;</h4>
+            <section class="grid1 center1">
+              <div class="item">ABCD 1</div>
+              <div class="item item-2">Item 2</div>
+              <div class="item item-3">AB 3</div>
+              <div class="item">Item 4</div>
+              <div class="item item-5">Item 5</div>
+              <div class="item">Item 6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>justify-items: stretch;</h4>
+            <section class="grid1 stretch1">
+              <div class="item">AB 1</div>
+              <div class="item item-2">Item 2</div>
+              <div class="item item-3">Item 3</div>
+              <div class="item">AB 4</div>
+              <div class="item item-5">ABC 5</div>
+              <div class="item">ABCD 6</div>
+            </section>
+          </div>
+        </section>
+        <section>
+          <h3>align-items</h3>
+          <p>
+            Alinha todos os itens da grid verticalmente dentro de sua própria
+            célula(área).
+          </p>
+          <ul>
+            <li>
+              <b>stretch (padrão)</b>: estica os itens verticalmente para eles
+              preencherem sua célula
+            </li>
+            <li>
+              <b>start</b>: alinha os itens na parte de cima de suas células
+            </li>
+            <li>
+              <b>end</b>: alinha os itens na parte de baixo de suas células
+            </li>
+            <li><b>center</b>: alinha os itens no centro de suas células</li>
+          </ul>
+          <div>
+            <h4>align-items: start;</h4>
+            <section class="grid2 start2">
+              <div class="item">AB 1</div>
+              <div class="item">AB 2</div>
+              <div class="item">Item 3</div>
+              <div class="item">AB 4</div>
+              <div class="item">Item 5</div>
+              <div class="item">ABCD 6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>align-items: end;</h4>
+            <section class="grid2 end2">
+              <div class="item">Item 1</div>
+              <div class="item">AB 2</div>
+              <div class="item">ABCD 3</div>
+              <div class="item">Item 4</div>
+              <div class="item">Item 5</div>
+              <div class="item">AB 6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>align-items: center;</h4>
+            <section class="grid2 center2">
+              <div class="item">ABCD 1</div>
+              <div class="item">Item 2</div>
+              <div class="item">AB 3</div>
+              <div class="item">Item 4</div>
+              <div class="item">Item 5</div>
+              <div class="item">Item 6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>align-items: stretch;</h4>
+            <section class="grid2 stretch2">
+              <div class="item">AB 1</div>
+              <div class="item">Item 2</div>
+              <div class="item">Item 3</div>
+              <div class="item">AB 4</div>
+              <div class="item">ABC 5</div>
+              <div class="item">ABCD 6</div>
+            </section>
+          </div>
+        </section>
+        <section>
+          <h3>place-items</h3>
+          <p>
+            Atalho para <code>align-items</code> e <code>justify-items</code> em
+            uma única declaração.
+          </p>
+        </section>
+        <section>
+          <h3>justify-content</h3>
+          <p>
+            O <code>justify-content</code> alinha horizontalmente as áreas em
+            relação ao container.
+          </p>
+          <ul>
+            <li>
+              <b>stretch</b> : redimensiona os itens da grid para preencherem a
+              largura do container. Apenas funciona se você não tiver declarado
+              uma largura para as colunas.
+            </li>
+            <li><b>start</b>: alinha as áreas no início da grid</li>
+            <li><b>end</b>: alinha as áreas no final da grid</li>
+            <li><b>center</b>: alinha as áreas no centro da grid</li>
+            <li>
+              <b>space-around</b>: distribui as áreas com o espaço a sua volta
+            </li>
+            <li>
+              <b>space-between</b>: distribui as áreas com o espaço entre elas
+            </li>
+            <li>
+              <b>space-evenly</b>: distribui o espaço igualmente entre as áreas
+            </li>
+          </ul>
+          <div>
+            <h4>justify-content: start;</h4>
+            <section class="grid start">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>justify-content: end;</h4>
+            <section class="grid end">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>justify-content: center;</h4>
+            <section class="grid center">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>justify-content: stretch;</h4>
+            <section class="grid stretch">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>justify-content: space-around;</h4>
+            <section class="grid space-around">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>justify-content: space-between;</h4>
+            <section class="grid space-between">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>justify-content: space-evenly;</h4>
+            <section class="grid space-evenly">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+        </section>
+        <section>
+          <h3>align-content</h3>
+          <p>
+            O <code>align-content</code> alinha verticalmente as áreas em
+            relação ao container
+          </p>
+          <ul>
+            <li>
+              <b>stretch</b>: redimensiona os itens da grid para preencherem a
+              altura do container. Apenas funciona se você não tiver declarado
+              uma altura para as linhas.
+            </li>
+            <li><b>start</b>: alinha as áreas no topo da grid</li>
+            <li><b>end</b>: alinha as áreas na base da grid</li>
+            <li><b>center</b>: alinha as áreas no centro da grid</li>
+            <li>
+              <b>space-around</b>: distribui as áreas com o espaço a sua volta
+            </li>
+            <li>
+              <b>space-between</b>: distribui as áreas com o espaço entre elas
+            </li>
+            <li>
+              <b>space-evenly</b>: distribui o espaço igualmente entre as áreas
+            </li>
+          </ul>
+          <div>
+            <h4>align-content: start;</h4>
+            <section class="grid4 start4">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>align-content: end;</h4>
+            <section class="grid4 end4">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>align-content: center;</h4>
+            <section class="grid4 center4">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>align-content: stretch;</h4>
+            <section class="grid4 stretch4">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>align-content: space-around;</h4>
+            <section class="grid4 space-around4">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>align-content: space-between;</h4>
+            <section class="grid4 space-between4">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+
+          <div>
+            <h4>align-content: space-evenly;</h4>
+            <section class="grid4 space-evenly4">
+              <div class="item">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item">4</div>
+              <div class="item item-5">5</div>
+              <div class="item">6</div>
+            </section>
+          </div>
+        </section>
+        <section>
+          <h3>place-content</h3>
+          <p>
+            Atalho para <code>align-content</code> e
+            <code>justify-content</code> em uma única declaração.
+          </p>
+        </section>
+        <section>
+          <h3>grid-auto-colums e grid-auto-rows</h3>
+          <p>
+            A propriedade <code>grid-auto-colums</code> é utilizada para definir
+            um tamanho padrão (largura) para todas as colunas que não possuem
+            valor descrito.
+          </p>
+          <p>
+            <code
+              >#grid-container { display: grid; grid-auto-columns: 6rem;}</code
+            >
+          </p>
+          <div id="grid-container">
+            <div class="item1">1</div>
+            <div class="item2">2</div>
+            <div class="item3">3</div>
+            <div class="item4">4</div>
+            <div class="item5">5</div>
+            <div class="item6">6</div>
+          </div>
+          <p>
+            A propriedade <code>grid-auto-rows</code> é utilizada para definir
+            um tamanho padrão (altura) para todas linhas que não possuem valor
+            descrito.
+          </p>
+          <p>
+            <code
+              >#grid-container2 { display: grid; grid-auto-rows: 5rem;}</code
+            >
+          </p>
+          <div id="grid-container2">
+            <div class="item1">1</div>
+            <div class="item2">2</div>
+            <div class="item3">3</div>
+            <div class="item4">4</div>
+            <div class="item5">5</div>
+            <div class="item6">6</div>
+          </div>
+        </section>
+        <section>
+          <h3>grid-auto-flow</h3>
+          <p>
+            Caso possuam itens que não tem uma área declarada para ficar, esta
+            propriedade indica se estes itens devem ir para uma nova linha ou
+            coluna.
+          </p>
+          <h4>grid-auto-flow: column</h4>
+          <p>São inseridos os itens coluna por coluna:</p>
+          <div id="grid-container3">
+            <div class="cell1">1</div>
+            <div class="cell2">2</div>
+            <div class="cell3">3</div>
+            <div class="cell4">4</div>
+          </div>
+          <h4>grid-auto-flow: row</h4>
+          <p>São inseridos os itens linha por linha:</p>
+          <div id="grid-container4">
+            <div class="cell1">1</div>
+            <div class="cell2">2</div>
+            <div class="cell3">3</div>
+            <div class="cell4">4</div>
+          </div>
+        </section>
+        <section>
+          <h3>grid</h3>
+          <p>
+            Atalho para definir em uma única declaração as seguintes
+            propriedades: <code>grid-template-rows</code>,
+            <code>grid-template-columns</code>,
+            <code>grid-template-areas</code>, <code>grid-auto-rows</code>,
+            <code>grid-auto-columns</code> e <code>grid-auto-flow</code>
+          </p>
+        </section>
+      </div>
+
+      <div>
+        <h2>Grid Item</h2>
+        <p>
+          Os Grid Itens são os filhos diretos do Grid Container. Um grid item
+          pode ser explícito ou implícito. Explicito é quanto você define ele
+          explicitamente no container e implícito é quanto ele é criado
+          automaticamente para preencher o conteúdo no grid.
+        </p>
+      </div>
+      <section>
+        <h3>grid-column</h3>
+        <p>
+          Define quais colunas serão ocupadas pelo grid item. É possível definir
+          uma linha de início e final, assim o item irá ocupar múltiplas
+          colunas.
+        </p>
+        <ul>
+          <li><b>grid-column: 1</b>- O item ocupará a coluna 1.</li>
+          <li>
+            <b>grid-column: 1 / 3</b>- O item ocupará a coluna 1 e 2 (Sim, isso
+            mesmo, 1 e 2, pois os valores 1 / 3 são referentes as linhas da
+            coluna. Isso significa que começa na linha 1 (início do grid) e vai
+            até a linha 3, que é o começo da terceira coluna).
+          </li>
+          <li><b>grid-column-start: 2</b>- item vai começar na linha 2.</li>
+          <li><b>grid-column-end: 4</b>- O item vai terminar na linha 4.</li>
+          <li>
+            <b>grid-column: span 2</b>- O item irá ocupar duas colunas a partir
+            de onde ele estiver.
+          </li>
+        </ul>
+        <div>
+          <h4>grid-column</h4>
+          <section class="grid5 grid-column-1">
+            <div class="item item-1">1</div>
+            <div class="item item-2">2</div>
+            <div class="item item-3">3</div>
+            <div class="item item-4">4</div>
+            <div class="item item-5">5</div>
+            <div class="item item-6">6</div>
+          </section>
+        </div>
+
+        <div>
+          <h4>grid-column span</h4>
+          <section class="grid5 grid-column-2">
+            <div class="item item-1">1</div>
+            <div class="item item-2">2</div>
+            <div class="item item-3">3</div>
+            <div class="item item-4">4</div>
+            <div class="item item-5">5</div>
+            <div class="item item-6">6</div>
+          </section>
+        </div>
+
+        <div>
+          <h4>grid-column-start / grid-column-end</h4>
+          <section class="grid5 grid-column-3">
+            <div class="item item-1">1</div>
+            <div class="item item-2">2</div>
+            <div class="item item-3">3</div>
+            <div class="item item-4">4</div>
+            <div class="item item-5">5</div>
+            <div class="item item-6">6</div>
+          </section>
+        </div>
+        <section>
+          <h3>grid-row</h3>
+          <p>
+            Define quais linhas serão ocupadas pelo grid item. Essa linha é
+            referente a row. Porém as chamadas grid lines que por tradução
+            também significam linhas do grid, são diferentes. Uma row (linha),
+            possui sempre 2 grid lines (linhas do grid), uma no início dela e
+            uma no final dela.
+          </p>
+          <ul>
+            <li><b>grid-row: 1 </b>- O item ocupará a linha 1.</li>
+            <li>
+              <b>grid-row: 1 / 3</b>- O item ocupará a linha 1 e 2 (Sim, isso
+              mesmo, 1 e 2, pois os valores 1 / 3 são referentes as linhas do
+              grid. Isso significa que começa na linha 1 (início do grid) e vai
+              até a linha 3 do grid, que é o começo da terceira linha).
+            </li>
+            <li>
+              <b>grid-row-start: 2</b>- O item vai começar na linha do grid 2.
+            </li>
+            <li>
+              <b>grid-row-end: 4</b>- O item vai terminar na linha do grid 4.
+            </li>
+            <li>
+              <b>grid-row: span 2</b>- O item irá ocupar duas linhas a partir de
+              onde ele estiver.
+            </li>
+          </ul>          
+            <h4>grid-row</h4>
+            <section class="grid6 grid-row-1">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+
+            <div>
+            <h4>grid-row span</h4>
+            <section class="grid6 grid-row-2">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+
+            <div>
+            <h4>grid-row-start / grid-row-end</h4>
+            <section class="grid6 grid-row-3">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>          
+        </section>
+        <section>
+          <h3>grid-area</h3>
+          <p>Define a área do item do grid. É um atalho para <code> grid-row-start</code>, <code>grid-column-start</code>, <code>grid-row-end</code>, <code>grid-column-end</code>.
+            O z-index pode ser utilizado para manipular a posição no eixo Z do item. Ou seja, se um item for posicionado em cima de outro, o z-index controla qual vêm na frente.
+          </p>
+          <ul>
+            <li><b>grid-area: 1 / 2 / 4 / 3;</b> Este é um atalho para:
+              <code>grid-row-start: 1;
+                grid-column-start: 2;
+                grid-row-end: 4;
+                grid-column-end: 3;</code>
+              </li>
+            <li><b>grid-area: header;</b> Vai posicionar o item na área definida como header.</li>
+          </ul>  
+          <div>
+            <h4>grid-area: 1 / 2 / 4 / 3;</h4>
+            <section class="grid7 grid-area-1">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+            
+            <div>
+            <h4>grid-area: header;</h4>
+            <section class="grid7 grid-area-2">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>        
+        </section>
+        <section>
+          <h3>justify-self</h3>
+          <p>Justifica o item do grid em relação ao eixo x (horizontal). Justifica em relação a célula.</p>
+          <ul>
+            <li><b>justify-self: start</b>- Justifica o item ao início.</li>
+            <li><b>justify-self: end</b>- Justifica o item ao final.</li>
+            <li><b>justify-self: center</b>- Centraliza o conteúdo.</li>
+            <li><b>justify-self: stretch</b>- Estica o item.</li>
+          </ul>
+          <div>
+            <h4>justify-self: start;</h4>
+            <section class="grid8 start">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+            
+            <div>
+            <h4>justify-self: end;</h4>
+            <section class="grid8 end">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">Item 5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+            
+            <div>
+            <h4>justify-self: center;</h4>
+            <section class="grid8 center">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">Item 5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+            
+            <div>
+            <h4>justify-self: stretch;</h4>
+            <section class="grid8 stretch">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">Item 5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+        </section>
+        <section>
+          <h3>align-self</h3>
+          <p>Justifica o item do grid em relação ao eixo y (vertical). Alinha em relação a célula.</p>
+          <ul>
+            <li><b>align-self: start</b>- Alinha o item ao início.</li>
+            <li><b>align-self: end</b>- Alinha o item ao final.</li>
+            <li><b>align-self: center</b>- Centraliza o conteúdo.</li>
+            <li><b>align-self: stretch</b>- Estica o item.</li>
+          </ul>
+          <div>
+            <h4>align-self: start;</h4>
+            <section class="grid9 start2">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+            
+            <div>
+            <h4>align-self: end;</h4>
+            <section class="grid9 end2">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">Item 5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+            
+            <div>
+            <h4>align-self: center;</h4>
+            <section class="grid9 center2">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">Item 5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+            
+            <div>
+            <h4>align-self: stretch;</h4>
+            <section class="grid9 stretch2">
+              <div class="item item-1">1</div>
+              <div class="item item-2">2</div>
+              <div class="item item-3">3</div>
+              <div class="item item-4">4</div>
+              <div class="item item-5">Item 5</div>
+              <div class="item item-6">6</div>
+            </section>
+            </div>
+        </section>
+      </section>
+      <div>
+        <h2>O que é unidade <span>fr</span>?</h2>
+        <p>
+          A unidade <code>fr</code> representa uma fração do espaço disponível
+          no container do grid. Dessa maneira, ela contribui para a criação de
+          layouts flexíveis.
+        </p>
+        <p>
+          <code
+            >.container { display: grid; grid-template-columns: 2fr 1fr 1fr;
+            height: 7rem; border: 2px solid red; padding: 1rem; }</code
+          >
+        </p>
+        <section class="container">
+          <div class="item">Item 1</div>
+          <div class="item">Item 2</div>
+          <div class="item">Item 3</div>
+          <div class="item">Item 4</div>
+          <div class="item">Item 5</div>
+        </section>
+      </div>
+      <div>
+        <h2>O que é a noção de repeat?</h2>
+        <p>
+          Grids grandes, com muitas tracks podem usar a notação
+          <code>repeat()</code> para repetir todas ou uma seção apenas.
+        </p>
+        <p>
+          Veja o exemplo abaixo: Ao invés de colocar
+          <code>grid-template-columns: 1fr 1fr 1fr 1fr 1fr;</code>, coloca-se o
+          <code>repeat</code> afim de facilitar o código:
+        </p>
+        <p>
+          <code
+            >.container-repeat { display: grid; grid-template-columns: repeat(5,
+            1fr); grid-template-rows: repeat(2, 1fr);}</code
+          >
+        </p>
+        <section class="container-repeat">
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </section>
+      </div>
+      <div>
+        <h2>O que são as linhas do Grid?</h2>
+        <p>
+          Ao definir um grid, designamos as trilhas dos mesmo, não as linhas. No
+          entanto, o próprio grid retorna linhas numeradas para serem usadas ao
+          posicionar itens. As linhas entre as columns são denominadas de
+          <i>column lines</i> e as linhas entre rows são denominadas
+          <i>row lines</i>.
+        </p>
+        <p>
+          No exemplo abaixo está posicionado os primeiros itens do grid de 3
+          colunas, usando as propriedades
+          <code>grid-column-start</code>,<code>grid-column-end</code>,<code
+            >grid-row-start</code
+          >
+          e <code>grid-row-end</code>.
+        </p>
+        <p>
+          Da esquerda para a direita, a primeira box é posicionado contra a
+          linha da coluna 1, e vai até a linha da coluna 4, que no caso é a
+          linha do extremo direito do grid. Começa na linha 1 e termina na linha
+          3, tendo uma expansão de duas linhas.
+        </p>
+        <p>
+          A segunda box inicia na linha da coluna 1, e expande uma linha. Esse é
+          o padrão, então não precisa especificar a linha final. Também vai da
+          linha 3 a linha 5. Os outros itens serão posicionados de acordo com
+          espaço disponível no grid.
+        </p>
+        <p>
+          <code
+            >.wrapper { display: grid; grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 100px; } .box1 { grid-column-start: 1;
+            grid-column-end: 4; grid-row-start: 1; grid-row-end: 3; } .box2 {
+            grid-column-start: 1; grid-row-start: 3; grid-row-end: 5; }</code
+          >
+        </p>
+        <div class="wrapper">
+          <div class="box box1">BOX 1</div>
+          <div class="box box2">BOX 2</div>
+          <div class="box box3">BOX 3</div>
+          <div class="box box4">BOX 4</div>
+          <div class="box box5">BOX 5</div>
+        </div>
+      </div>
+      <div>
+        <h2>O que é uma célula no Grid?</h2>
+        <p>
+          Uma célula de grid é a menor unidade em um grid. Uma vez que o grid é
+          definido como o pai, os itens filhos serão organizados cada um em uma
+          célular do grid definido
+        </p>
+        <section class="cells">
+          <div class="cell-1">Célula</div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+          <div class="cell"></div>
+        </section>
+      </div>
+      <div>
+        <h2>O que são áreas do Grid?</h2>
+        <p>
+          Os Grid Items podem se espalhar por uma ou mais células ambas entre
+          linhas e colunas, e isto cria uma <b><i>Área de Grid</i></b
+          >. As áreas de grid devem ser retangulares, ou seja, não é possível
+          criar uma área em L por exemplo.
+        </p>
+        <p>
+          Basicamente define a área do item do grid. É um atalho para
+          grid-row-start, grid-column-start, grid-row-end, grid-column-end.
+        </p>
+        <p>
+          <b>grid-area: 1 / 2 / 4 / 3;</b> // É um atalho para:
+          <code>
+            grid-row-start: 1; grid-column-start: 2; grid-row-end: 4;
+            grid-column-end: 3;</code
+          >
+        </p>
+        <p>Abaixo o exemplo:</p>
+        <p>
+          <code>
+            #grid { display: grid; grid-template-columns: repeat(4, 1fr); }
+            #item1 { grid-area: 2 / 2 / auto / span 3; }
+          </code>
+        </p>
+      </div>
+      <div id="grid">
+        <div id="item1">Item 1</div>
+        <div id="item2">Item 2</div>
+        <div id="item3">Item 3</div>
+      </div>
+    </main>
+  </body>
+</html>
