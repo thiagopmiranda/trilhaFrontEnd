@@ -1,0 +1,183 @@
+<router-outlet></router-outlet>
+
+<div>
+  <p>Meu nome é: {{ myName }} e do meu guia é: {{ guideName }}</p>
+  <p>
+    Data de hoje:
+    {{ dateToday | date: "EEEE, MMMM d, y, h:mm:ss a zzzz" }}
+    (Horário Padrão de Brasília)
+  </p>
+  <p>Faço parte da turma: {{ class }}</p>
+</div>
+
+<div>
+  <h2>Property Binding</h2>
+  <img src="{{ urlImagem }}" alt="" />
+  <img [src]="urlImagem" />
+</div>
+
+<article>
+  <h2>Event binding</h2>
+  <div>
+    <button (click)="buttonClick()" class="btn btn-primary">Me clique!</button>
+
+    <br /><br />
+
+    <input
+      type="text"
+      (keyup)="onKeyUp($event)"
+      (keyup.enter)="salvarValor(campoInput.value)"
+      (blur)="salvarValor(campoInput.value)"
+      #campoInput
+    />
+
+    <p>Valor atual : {{ valorAtual }}</p>
+    <p>Valor salvo : {{ valorSalvo }}</p>
+
+    <br />
+    <span
+      (mouseover)="onMouseOverOut()"
+      (mouseout)="onMouseOverOut()"
+      [class.highlight]="isMouseOver"
+    >
+      Passe o mouse sobre mim</span
+    >
+  </div>
+</article>
+<section class="two-way-binding">
+  <article>
+    <h2>Two-way data binding</h2>
+    <div>
+      <input type="text" [ngModel]="nome" (ngModelChange)="nome = $event" />
+
+      <input type="text" [(ngModel)]="nome" />
+
+      <input type="text" bindon-ngModel="nome" />
+      <p>Você digitou: {{ nome }}</p>
+    </div>
+
+    <div>
+      <input type="text" [(ngModel)]="pessoa.nome" />
+      <input type="text" [(ngModel)]="pessoa.idade" />
+
+      <p>
+        Meu nome é {{ pessoa.nome }} e tenho {{ pessoa.idade }} anos de idade
+      </p>
+    </div>
+  </article>
+</section>
+
+<section>
+  <article>
+    <h2>*ngIF</h2>
+    <div *ngIf="cursos.length > 0">Lista de cursos aqui.</div>
+    <div *ngIf="cursos.length == 0">
+      Não existem cursos para serem listados.
+    </div>
+    <div *ngIf="mostrarCursos">Lista de cursos aqui.</div>
+    <div *ngIf="!mostrarCursos">Não existem cursos para serem listados.</div>
+
+    <br />
+
+    <button (click)="onMostrarCursos()">Mostrar ou esconder cursos</button>
+
+    <h5>hidden como alternativa</h5>
+    <div [hidden]="!mostrarCursos">Lista de cursos aqui.</div>
+    <div [hidden]="!mostrarCursos">Não existem cursos para serem listados.</div>
+  </article>
+</section>
+
+<section>
+  <h2>Diretiva *ngSwitch</h2>
+  <nav class="navbar">
+    <div class="nav navbar-nav">
+      <a
+        class="nav-item nav-link"
+        [class.ative]="aba == 'home'"
+        (click)="aba = 'home'"
+        >Home</a
+      >
+      <a
+        class="nav-item nav-link"
+        [class.ative]="aba == 'mapa'"
+        (click)="aba = 'mapa'"
+        >Mapa</a
+      >
+      <a
+        class="nav-item nav-link"
+        [class.ative]="aba == 'lista'"
+        (click)="aba = 'lista'"
+        >Lista</a
+      >
+    </div>
+  </nav>
+
+  <div class="container" [ngSwitch]="aba">
+    <p *ngSwitchCase="'mapa'">Modo Mapa Ativado</p>
+    <p *ngSwitchCase="'lista'">Modo Lista Ativado</p>
+    <p *ngSwitchDefault>Home</p>
+  </div>
+</section>
+
+<section>
+  <h2>Diretiva *ngFor</h2>
+  <ul>
+    <li *ngFor="let curso of cursos2; let i = index">
+      {{ i + 1 }} - {{ curso }}
+    </li>
+  </ul>
+</section>
+
+<section>
+  <h2>Diretiva de Atributo *ngClass</h2>
+  <h4>Usando Property binding</h4>
+  <h1>
+    <i
+      class="glyphicon"
+      [class.glyphicon-star-empty]="!meuFavorito"
+      [class.glyphicon-star]="meuFavorito"
+      (click)="onClick()"
+    ></i>
+  </h1>
+
+  <h4>Usando ngClass</h4>
+  <h1>
+    <i
+      class="glyphicon"
+      [ngClass]="{
+        'glyphicon-star-empty': !meuFavorito,
+        'glyphicon-star': meuFavorito
+      }"
+      (click)="onClick()"
+    ></i>
+  </h1>
+</section>
+
+<section>
+  <h2>Diretiva Estrutural ngStyle</h2>
+  <h4>Styles com property binding (style binding)</h4>
+  <button
+    [style.backgroundColor]="ativo ? 'blue' : 'gray'"
+    [style.color]="ativo ? 'white' : 'black'"
+    [style.fontWeight]="ativo ? 'bold' : 'normal'"
+    [style.fontSize]="tamanhoFonte + 'px'"
+    (click)="mudarAtivo()"
+  >
+    Mudar atributo 'ativo'
+  </button>
+  <br />
+  <input type="text" [(ngModel)]="tamanhoFonte" />
+
+  <h4>Usando ngStyle</h4>
+  <button
+    [ngStyle]="{
+      backgroundColor: ativo ? 'blue' : 'gray',
+      color: ativo ? 'white' : 'black',
+      fontWeight: ativo ? 'bold' : 'normal',
+      fontSize: tamanhoFonte + 'px'
+    }"
+    (click)="mudarAtivo()"
+  >
+    Mudar atributo 'ativo'
+  </button>
+</section>
