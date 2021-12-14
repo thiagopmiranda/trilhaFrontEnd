@@ -118,6 +118,18 @@ O arquivo angular.json contém as configurações globais da aplicação, també
 
 ## Quais pacotes (libs) são considerados primários (default)?
 
+- **Angular Router**: Navegação avançada do lado do cliente e roteamento com base em componentes angulares. Suporta carregamento lento, rotas aninhadas, correspondência de caminho personalizado e muito mais.
+
+- **Angular Forms**: Sistema uniforme de participação e validação de formulários.
+
+- **Angular HttpClient**: Cliente HTTP robusto que pode possibilitar uma comunicação cliente-servidor mais avançada.
+
+- **Angular Animations**: Sistema rico para conduzir animações com base no estado do aplicativo.
+
+- **Angular PWA**: Ferramentas para a construção de Progressive Web Applications (PWAs), incluindo um service worker e o manifesto do Web app.
+
+- **Angular Schematics**: Ferramentas automatizadas de scaffolding, refatoração e atualização que simplificam o desenvolvimento em grande escala.
+
 ## Para que serve o arquivo package.json?
 
 Package.json: Contém todas as dependências da aplicação, à medida que instalar uma nova dependência, ela vai aparecer no arquivo.
