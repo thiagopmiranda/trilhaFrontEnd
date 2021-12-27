@@ -12,7 +12,7 @@ export class ComponentePaiComponent {
   }
 
   isPrime(num: number) {
-    for (var i = 2; i < num; i++) if (num % i === 0) return false;
+    for (var i = 2; i < num; i++) if (num % i === 0) return 'não é primo';
     return num > 1 ? 'é primo' : 'não é primo';
   }
 }

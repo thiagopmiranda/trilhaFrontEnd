@@ -4,6 +4,10 @@
   {{ isPrime(numeroComponent) }}
 </p>
 
-<button (click)="calcularCubo()">
-  Quanto é {{ numeroComponent }} ao cubo?
+<button [routerLink]="['/quadrado']" [state]="{ valorRota: numeroComponent }">
+  Quanto é {{ numeroComponent }} ao quadrado?
+</button>
+
+<button (click)="calculaCubo()">
+  <p>Quanto é {{ numeroComponent }} ao cubo?</p>
 </button>
