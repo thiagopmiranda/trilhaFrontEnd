@@ -1,0 +1,25 @@
+<nav class="container">
+  <div id="logo">
+    <a href="">Logotype</a>
+  </div>
+  <div class="menu">
+    <ul *ngIf="responsivity || toggle" class="grid">
+      <!--*ngIf="toggle"-->
+      <li><a class="title" routerLink="/">Home</a></li>
+      <li><a class="title" href="#products">Products</a></li>
+      <li><a class="title" href="#download">Download</a></li>
+      <li><a class="title" href="#store">Store</a></li>
+      <li><a class="title" routerLink="/contactUs">ContactUs</a></li>
+      <li><button class="button">Log In</button></li>
+    </ul>
+  </div>
+  <div class="toggle container">
+    <img
+      src="https://img.icons8.com/android/24/000000/menu.png"
+      (click)="responsivity = !responsivity"
+    />
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>

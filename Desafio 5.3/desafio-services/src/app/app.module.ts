@@ -1,4 +1,3 @@
-import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -18,7 +17,7 @@ import { DeleteUserComponent } from './users/delete-user/delete-user.component';
     UpdateComponent,
     DeleteUserComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
+  imports: [BrowserModule, FormsModule, AppRoutingModule],
   providers: [],
   bootstrap: [AppComponent],
 })

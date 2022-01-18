@@ -1,0 +1,98 @@
+<main>
+  <section id="contactUs">
+    <div class="container">
+      <div>
+        <h1>Questions?</h1>
+        <h2>Contact us :)</h2>
+      </div>
+      <form class="forms" [formGroup]="formContact">
+        <input
+          type="text"
+          id="name"
+          placeholder="Name"
+          formControlName="name"
+        />
+        <ng-container *ngFor="let erro of mensagens.name">
+          <label
+            *ngIf="
+              formContact.get('name').hasError(erro.tipo) &&
+              (formContact.get('name').dirty || formContact.get('name').touched)
+            "
+          >
+            {{ erro.mensagem }}
+          </label>
+        </ng-container>
+
+        <input
+          type="text"
+          id="email"
+          placeholder="Email"
+          formControlName="email"
+        />
+        <ng-container *ngFor="let erro of mensagens.email">
+          <label
+            *ngIf="
+              formContact.get('email').hasError(erro.tipo) &&
+              (formContact.get('email').dirty ||
+                formContact.get('email').touched)
+            "
+          >
+            {{ erro.mensagem }}
+          </label>
+        </ng-container>
+
+        <input
+          type="text"
+          id="subject"
+          placeholder="Subject"
+          formControlName="subject"
+        />
+        <ng-container *ngFor="let erro of mensagens.subject">
+          <label
+            *ngIf="
+              formContact.get('subject').hasError(erro.tipo) &&
+              (formContact.get('subject').dirty ||
+                formContact.get('subject').touched)
+            "
+          >
+            {{ erro.mensagem }}
+          </label>
+        </ng-container>
+
+        <textarea
+          name="message"
+          id="message"
+          cols="30"
+          rows="10"
+          placeholder="Message"
+          formControlName="message"
+        ></textarea>
+        <ng-container *ngFor="let erro of mensagens.message">
+          <label
+            *ngIf="
+              formContact.get('message').hasError(erro.tipo) &&
+              (formContact.get('message').dirty ||
+                formContact.get('message').touched)
+            "
+          >
+            {{ erro.mensagem }}
+          </label>
+        </ng-container>
+        <button
+          id="submit"
+          type="submit"
+          (click)="postData()"
+          [disabled]="!formContact.valid"
+        >
+          Send
+        </button>
+      </form>
+    </div>
+    <div class="image">
+      <img
+        src="../../../assets/images/illustration.svg"
+        alt="Pessoa correndo com avião de papel na mão"
+      />
+    </div>
+  </section>
+</main>
