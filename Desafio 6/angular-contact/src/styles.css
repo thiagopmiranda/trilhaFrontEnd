@@ -231,7 +231,6 @@ nav ul.grid {
 #contactUs {
   gap: 2rem;
   margin-top: 10rem;
-  width: 100%;
 }
 
 #contactUs h1 {
@@ -250,18 +249,9 @@ nav ul.grid {
   visibility: hidden;
 }
 
-#contactUs .grid {
-  margin-left: 1.5rem;
-  margin-right: 1.5rem;
-}
-
 .forms {
-  display: grid;
-  grid-template-columns: repeat(2, 9.97rem);
-  grid-template-rows: repeat(3, 3.5rem);
-  gap: 0.5rem;
   margin-top: 1.5rem;
-  width: 100%;
+  justify-self: center;
 }
 
 #name {
@@ -271,6 +261,8 @@ nav ul.grid {
   padding: 0.875rem;
   border: 2px solid var(--text-color-light);
   border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 #name::placeholder {
@@ -290,6 +282,8 @@ nav ul.grid {
   padding: 0.875rem;
   border: 2px solid var(--text-color-light);
   border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 #email::placeholder {
@@ -305,12 +299,13 @@ nav ul.grid {
 #subject {
   color: var(--text-color);
   font: 500 var(--label-font-size) var(--body-font);
-  grid-column-start: 1;
-  grid-column-end: 3;
+
   height: 3.125rem;
   padding: 0.875rem;
   border: 2px solid var(--text-color-light);
   border-radius: 0.25rem;
+  margin-bottom: 1.5rem;
+  width: 100%;
 }
 
 #subject::placeholder {
@@ -326,12 +321,11 @@ nav ul.grid {
 #message {
   color: var(--text-color);
   font: 500 var(--label-font-size) var(--body-font);
-  grid-column-start: 1;
-  grid-column-end: 3;
   height: 6rem;
   padding: 0.875rem;
   border: 2px solid var(--text-color-light);
   border-radius: 0.25rem;
+  width: 100%;
 }
 
 #message::placeholder {
@@ -348,8 +342,8 @@ nav ul.grid {
   color: var(--title-color);
   background: var(--base-color);
   font: 700 var(--label-font-size) var(--body-font);
-  grid-column-start: 1;
-  grid-column-end: 3;
+  text-align: center;
+  width: 6rem;
   justify-self: self-start;
   border: none;
   border-radius: 0.25rem;
@@ -364,6 +358,13 @@ nav ul.grid {
   color: var(--base-color);
   background: var(--title-color);
   box-shadow: 0rem 4px var(--base-color);
+}
+
+.alert {
+  color: red;
+  font-size: 0.875rem;
+  font-style: italic;
+  height: 1rem;
 }
 
 /*====== RESPONSIVE =====*/
@@ -385,12 +386,6 @@ nav ul.grid {
   }
 
   /* navigation */
-  nav {
-    display: grid;
-    grid-auto-flow: column;
-    align-items: center;
-    justify-content: space-between;
-  }
 
   nav .menu {
     opacity: 1;
@@ -400,11 +395,6 @@ nav ul.grid {
   nav .menu ul {
     display: flex;
     align-items: center;
-    gap: 1rem;
-  }
-
-  nav .logo {
-    grid-column: 1;
   }
 
   nav .menu ul li a {
@@ -447,16 +437,24 @@ nav ul.grid {
   }
 }
 
+#name,
+#email,
+#subject,
+#message {
+  max-width: 25rem;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+}
+
 /* large devices: 1200 > */
 @media (min-width: 1200px) {
   .container {
     max-width: 1120px;
     margin-left: auto;
     margin-right: auto;
-  }
-
-  .forms {
-    grid-template-columns: repeat(2, 13.5rem);
   }
 
   nav .menu ul {

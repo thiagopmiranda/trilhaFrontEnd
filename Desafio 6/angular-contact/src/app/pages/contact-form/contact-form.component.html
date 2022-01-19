@@ -5,60 +5,67 @@
         <h1>Questions?</h1>
         <h2>Contact us :)</h2>
       </div>
+
       <form class="forms" [formGroup]="formContact">
+        <label
+          *ngIf="name?.invalid && (name?.dirty || name?.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="name?.errors?.['required']">Name is required</div>
+          <div *ngIf="name?.errors?.['minlength']">
+            Name must be at least 3 characters long.
+          </div>
+        </label>
         <input
           type="text"
           id="name"
           placeholder="Name"
           formControlName="name"
+          required
         />
-        <ng-container *ngFor="let erro of mensagens.name">
-          <label
-            *ngIf="
-              formContact.get('name').hasError(erro.tipo) &&
-              (formContact.get('name').dirty || formContact.get('name').touched)
-            "
-          >
-            {{ erro.mensagem }}
-          </label>
-        </ng-container>
 
+        <label
+          *ngIf="email?.invalid && (email?.dirty || email?.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="email?.errors?.['required']">Email is required</div>
+          <div *ngIf="email?.errors?.['email']">Format Invalid email.</div>
+        </label>
         <input
           type="text"
           id="email"
           placeholder="Email"
           formControlName="email"
         />
-        <ng-container *ngFor="let erro of mensagens.email">
-          <label
-            *ngIf="
-              formContact.get('email').hasError(erro.tipo) &&
-              (formContact.get('email').dirty ||
-                formContact.get('email').touched)
-            "
-          >
-            {{ erro.mensagem }}
-          </label>
-        </ng-container>
 
+        <label
+          *ngIf="subject?.invalid && (subject?.dirty || subject?.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="subject?.errors?.['required']">Subject is required</div>
+          <div *ngIf="subject?.errors?.['minlength']">
+            Subject must be at least 3 characters long.
+          </div>
+        </label>
         <input
           type="text"
           id="subject"
           placeholder="Subject"
           formControlName="subject"
         />
-        <ng-container *ngFor="let erro of mensagens.subject">
-          <label
-            *ngIf="
-              formContact.get('subject').hasError(erro.tipo) &&
-              (formContact.get('subject').dirty ||
-                formContact.get('subject').touched)
-            "
-          >
-            {{ erro.mensagem }}
-          </label>
-        </ng-container>
 
+        <label
+          *ngIf="message?.invalid && (message?.dirty || message?.touched)"
+          class="alert alert-danger"
+        >
+          <div *ngIf="message?.errors?.['required']">Message is required</div>
+          <div *ngIf="message?.errors?.['minlength']">
+            Message must be at least 10 characters long.
+          </div>
+          <div *ngIf="message?.errors?.['maxlength']">
+            Message must be at maximum 50 characters.
+          </div>
+        </label>
         <textarea
           name="message"
           id="message"
@@ -67,17 +74,7 @@
           placeholder="Message"
           formControlName="message"
         ></textarea>
-        <ng-container *ngFor="let erro of mensagens.message">
-          <label
-            *ngIf="
-              formContact.get('message').hasError(erro.tipo) &&
-              (formContact.get('message').dirty ||
-                formContact.get('message').touched)
-            "
-          >
-            {{ erro.mensagem }}
-          </label>
-        </ng-container>
+
         <button
           id="submit"
           type="submit"
