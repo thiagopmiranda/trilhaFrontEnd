@@ -1,0 +1,126 @@
+<main>
+  <section id="contactUs">
+    <div>
+      <div>
+        <h1>Questions?</h1>
+        <h2>Contact us :)</h2>
+      </div>
+
+      <form class="forms" [formGroup]="formContact">
+        <mat-form-field class="name-input" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="nameFormControl"
+            placeholder="Ex. Fulano"
+          />
+          <mat-error
+            *ngIf="
+              nameFormControl.hasError('minlength') &&
+              !nameFormControl.hasError('required')
+            "
+          >
+            Name must be at least 3 characters long
+          </mat-error>
+          <mat-error *ngIf="nameFormControl.hasError('required')">
+            Name is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="email-input" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            [formControl]="emailFormControl"
+            placeholder="Ex. pat@example.com"
+          />
+          <mat-error
+            *ngIf="
+              emailFormControl.hasError('email') &&
+              !emailFormControl.hasError('required')
+            "
+          >
+            Please enter a valid email address
+          </mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">
+            Email is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="subject-input" appearance="fill">
+          <mat-label>Subject</mat-label>
+          <input
+            type="text"
+            matInput
+            [formControl]="subjectFormControl"
+            placeholder="Ex. Título Aqui"
+          />
+          <mat-error
+            *ngIf="
+              subjectFormControl.hasError('minlength') &&
+              !subjectFormControl.hasError('required')
+            "
+          >
+            Subject must be at least 4 characters long
+          </mat-error>
+          <mat-error *ngIf="subjectFormControl.hasError('required')">
+            Subject is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="message-input" appearance="fill">
+          <mat-label>Message</mat-label>
+          <textarea
+            matInput
+            [formControl]="messageFormControl"
+            placeholder="Ex. Escreva aqui a sua mensagem"
+            onKeyPress="if(this.value.length==51) return false;"
+          ></textarea>
+          <mat-error
+            *ngIf="
+              messageFormControl.hasError('minlength') &&
+              !messageFormControl.hasError('required')
+            "
+          >
+            Message must be at least 10 characters long
+          </mat-error>
+          <mat-error
+            *ngIf="
+              messageFormControl.hasError('maxlength') &&
+              !messageFormControl.hasError('required')
+            "
+          >
+            Message must be at maximum 50 characters
+          </mat-error>
+          <mat-error *ngIf="messageFormControl.hasError('required')">
+            Message is <strong>required</strong>
+          </mat-error>
+        </mat-form-field>
+
+        <div>
+          <button
+            mat-raised-button
+            color="primary"
+            (click)="postData()"
+            [disabled]="
+              !nameFormControl.valid ||
+              !emailFormControl.valid ||
+              !subjectFormControl.valid ||
+              !messageFormControl.valid
+            "
+          >
+            Send
+          </button>
+        </div>
+      </form>
+    </div>
+    <div class="image">
+      <img
+        src="../../../assets/images/illustration.svg"
+        alt="Pessoa correndo com avião de papel na mão"
+      />
+    </div>
+  </section>
+</main>

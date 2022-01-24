@@ -1,0 +1,22 @@
+<mat-toolbar id="header">
+  <div id="logo">
+    <a href="">Logotype</a>
+  </div>
+  <div class="menu">
+    <ul *ngIf="responsivity || toggle" class="grid">
+      <!--*ngIf="toggle"-->
+      <li><a class="title" routerLink="/">Home</a></li>
+      <li><a class="title" href="#products">Products</a></li>
+      <li><a class="title" href="#download">Download</a></li>
+      <li><a class="title" href="#store">Store</a></li>
+      <li><a class="title" routerLink="/contactUs">ContactUs</a></li>
+      <li><button class="button">Log In</button></li>
+    </ul>
+  </div>
+  <button mat-icon-button class="toggle container">
+    <mat-icon (click)="responsivity = !responsivity">menu</mat-icon>
+  </button>
+</mat-toolbar>
+<div>
+  <router-outlet></router-outlet>
+</div>
