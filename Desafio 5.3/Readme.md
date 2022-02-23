@@ -22,7 +22,7 @@ Verdadeiro. Pois através dele que o Component poderá fazer a comunicação par
 
 ### Verdadeiro ou Falso. Uma service é do tipo de padrão de projeto `Singleton`? Justifique sua escolha.
 
-Falso. Nem todos service são do tipo padrão `Singleton` dentro do Angular. Você pode usá-lo em várias instâncias.
+Verdadeiro. Sim por padrão o service possui `Singleton` pois irá instanciar apenas uma vez.
 
 ### Escreva uma service que deverá ter os seguintes métodos e em cada um deverá escrever uma implementação básica (pode ser usado Arrays):
 
@@ -78,11 +78,6 @@ O HTTP (Hypertext Transfer Protocol ou Protocolo de Transferência de Hipertexto
 
 ### Cite outros tipos de comunicação com o backend e faça um breve resumo de cada.
 
-- Através de conteúdo estático.
-- Através de conteúdo dinâmico.
-- Através de interatividade com jQuery, Javascript.
-- Através de estrutura frontend integrada
-- Aplicativo de SPA
 
 ### Que recursos o HTTP nos fornece?
 
@@ -227,10 +222,11 @@ Os cabeçalhos HTTP permitem que o cliente e o servidor passem informações adi
 Promise sempre são assíncronas, enquanto Observable pode ser tanto síncronas quanto assíncronas.
 Promise sempre retornam o mesmo valor, enquanto Observable pode retornar um fluxo de valores, de nenhum a vários.
 O Observable, pode ser aprimorado usando outras ferramentas dentro do RxJS, para tornar ele ainda mais poderoso, conseguindo definir fluxos sobre medida.
+( Observable consegue utilizar as mesma funcionalidades do Promise, sendo assim mais  )
 
 ### O que significa ser baseado em eventos?
 
-Significa que ele é baseado em ações
+Significa que ele é baseado em ações. Ação e reação. As funções e métodos sendo utilizados conforme as ações acontecem.
 
 ### O que é o padrão de projetos Observer?
 
@@ -238,11 +234,13 @@ Significa que ele é baseado em ações
 
 ### O que é o padrão de projetos Iterator?
 
-éé um padrão de design no qual um iterador é usado para percorrer um contêiner e acessar os elementos do contêiner. O padrão do iterador desacopla algoritmos de contêineres; em alguns casos, os algoritmos são necessariamente específicos do contêiner e, portanto, não podem ser separados.
+É um padrão de design no qual um iterador é usado para percorrer um contêiner e acessar os elementos do contêiner. O padrão do iterador desacopla algoritmos de contêineres; em alguns casos, os algoritmos são necessariamente específicos do contêiner e, portanto, não podem ser separados.
+
 
 ### O que é programação funcional com coleções?
 
 São um padrão de programação onde você organiza alguns cálculos como uma sequência de operações que se compõe tomando uma coleção como saída de uma operação e alimentando-a na próxima. (As operações comuns são filtrar, mapear e reduzir.) Esse padrão é comum na programação funcional e também em linguagens orientadas a objetos que possuem lambdas.
+
 
 ### Quais os conceitos básicos do RxJS para eventos assíncronos? Descreva todos e dê um exemplo de como utilizá-lo.
 
@@ -251,7 +249,7 @@ São um padrão de programação onde você organiza alguns cálculos como uma s
 - Assinatura: representa a execução de um Observable, é principalmente útil para cancelar a execução.
 - Operadores: são funções puros que permitem um estilo de programação funcional de lidar com coleções com operações como map, filter, concat, reduce, etc.
 - Assunto: é equivalente a um EventEmitter e a única forma de multicast de um valor ou evento para vários Observadores.
-- Schedulers: são despachantes para a simultaneidade de controle centralizado, permitindo-nos para coordenar quando computação acontece no exemplo setTimeoutou requestAnimationFrameou outros.
+- Schedulers: são despachantes para a simultaneidade de controle centralizado, permitindo-nos para coordenar quando computação acontece no exemplo setTimeout ou requestAnimationFrame ou outros.
 
 ### Quais são os operadores de criação?
 
