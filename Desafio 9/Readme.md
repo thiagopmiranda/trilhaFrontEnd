@@ -107,9 +107,9 @@ if (this.currentAction == "edit ") {
 Herança
 `export class EntryFormComponent extends BaseResourceFormComponent<Entry> implements OnInit`
 
-## A linha a seguir se refere a encapsulamento, polimorfismo, herança, abstração ouinjeção de dependências?
+## A linha a seguir se refere a encapsulamento, polimorfismo, herança, abstração ou injeção de dependências?
 
-Injeção de Dependências
+Abstração
 
 ```
 ngOnInit() {
